@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 4.2333332 4.2333335"
+   height="16"
+   width="16">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-292.76665)"
+     id="layer1">
+    <g
+       id="text4506"
+       style="font-style:normal;font-weight:normal;font-size:3.93085957px;line-height:2.45678711px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#da4453;fill-opacity:1;stroke:none;stroke-width:0.0982715"
+       aria-label="TF">
+      <path
+         id="path4767"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';fill:#fdbc4b;fill-opacity:0.94117647;stroke-width:0.0982715"
+         d="M 1.2990172,296.28638 H 0.94393469 V 293.7912 H 0.06678488 v -0.31093 H 2.1704089 v 0.31093 H 1.2990172 Z" />
+      <path
+         id="path4769"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';fill:#fdbc4b;fill-opacity:0.94117647;stroke-width:0.0982715"
+         d="M 2.9515904,296.28638 H 2.5984272 v -2.80611 h 1.5681213 v 0.31093 H 2.9515904 v 0.99423 h 1.1401028 v 0.30902 H 2.9515904 Z" />
+    </g>
+  </g>
+</svg>
