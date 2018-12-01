@@ -28,15 +28,18 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     documentmodel.cpp \
-    document.cpp
+    document.cpp \
+    documentview.cpp
 
 HEADERS += \
         mainwindow.h \
     documentmodel.h \
-    document.h
+    document.h \
+    documentview.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    documentview.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
