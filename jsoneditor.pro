@@ -27,11 +27,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    documentmodel.cpp
+    documentmodel.cpp \
+    document.cpp
 
 HEADERS += \
         mainwindow.h \
-    documentmodel.h
+    documentmodel.h \
+    document.h
 
 FORMS += \
         mainwindow.ui
