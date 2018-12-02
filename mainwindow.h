@@ -15,8 +15,16 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_actionNew_triggered();
+
+    void on_actionClose_triggered();
+
+    void on_actionOpen_triggered();
+
 private:
     Ui::MainWindow *ui;
+    QString nextDocumentName(const QString& baseName) const;
 };
 
 #endif // MAINWINDOW_H

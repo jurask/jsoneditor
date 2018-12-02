@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QFile>
 #include <QIODevice>
+#include <QTextDocument>
 #include "documentmodel.h"
 
 class Document : public QObject
@@ -14,12 +15,16 @@ public:
     explicit Document(QFile &file, QObject* parent = nullptr);
     bool save();
     bool saveAs(QString& name);
+    bool isValid() const;
+    QString name() const;
+    QTextDocument* textDocument();
 
 signals:
+    void nameChanged(QString name);
 
 public slots:
 private:
-    QString data;
+    QTextDocument* data = nullptr;
     QString documentname;
     QString documentpath;
     DocumentModel* model = nullptr;
