@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMdiSubWindow>
+#include <QCloseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +35,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString nextDocumentName(const QString& baseName) const;
+
+protected:
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // MAINWINDOW_H

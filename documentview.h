@@ -22,6 +22,7 @@ public:
     bool isDirty() const;
     void saveAs();
     void save();
+    bool close();
 
 private slots:
     void assembleTitle();
@@ -29,6 +30,9 @@ private slots:
 private:
     Ui::DocumentView *ui;
     Document* document;
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 signals:
     void dirtyChanged(bool dirty);

@@ -104,3 +104,14 @@ void MainWindow::on_actionSave_triggered(){
     DocumentView* documentView = static_cast<DocumentView*>(ui->mdiArea->activeSubWindow()->widget());
     documentView->save();
 }
+
+void MainWindow::closeEvent(QCloseEvent *event){
+    for (QMdiSubWindow* window :  ui->mdiArea->subWindowList()){
+        DocumentView* documentView = static_cast<DocumentView*>(window->widget());
+        if (!documentView->close()){
+            event->ignore();
+            return;
+        }
+        event->accept();
+    }
+}

@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDir>
+#include <QCloseEvent>
 
 DocumentView::DocumentView(const QString &name, QWidget* parent) : QWidget(parent), ui(new Ui::DocumentView){
     ui->setupUi(this);
@@ -68,4 +69,25 @@ void DocumentView::save(){
     }
     if (!document->save())
         QMessageBox::critical(this, "Error", "Error saving file");
+}
+
+bool DocumentView::close(){
+    if (document->isDirty()){
+        QMessageBox::StandardButton btn = QMessageBox::warning(this, "Document not saved", "Document " + document->name() + " not saved, do you want to save it?", QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+        if (btn == QMessageBox::Yes){
+            save();
+            return true;
+        } else if (btn == QMessageBox::No)
+            return true;
+        else
+            return false;
+    } else
+        return true;
+}
+
+void DocumentView::closeEvent(QCloseEvent *event){
+    if (close())
+        event->accept();
+    else
+        event->ignore();
 }
