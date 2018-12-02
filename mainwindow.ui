@@ -212,6 +212,9 @@
    <property name="checked">
     <bool>true</bool>
    </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset theme="window">
      <normaloff>.</normaloff>.</iconset>
@@ -224,6 +227,9 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset theme="view-split-left-right">
      <normaloff>.</normaloff>.</iconset>
@@ -235,6 +241,9 @@
   <action name="actionText">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
    </property>
    <property name="icon">
     <iconset theme="view-list-text">

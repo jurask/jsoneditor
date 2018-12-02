@@ -4,7 +4,6 @@
 #include "documentview.h"
 
 #include <QActionGroup>
-#include <QMdiSubWindow>
 #include <QFileDialog>
 #include <QDir>
 
@@ -47,6 +46,7 @@ QString MainWindow::nextDocumentName(const QString& baseName) const{
 void MainWindow::on_actionNew_triggered(){
     //create
     DocumentView * document = new DocumentView(nextDocumentName(tr("New document")), this);
+    connect(document, &DocumentView::windowTitleChanged, this, &MainWindow::activeWindowTitleChanged);
     document->setAttribute(Qt::WA_DeleteOnClose);
     ui->mdiArea->addSubWindow(document);
     document->show();
@@ -65,8 +65,32 @@ void MainWindow::on_actionOpen_triggered(){
             delete document;
             return;
         }
+        connect(document, &DocumentView::windowTitleChanged, this, &MainWindow::activeWindowTitleChanged);
         document->setAttribute(Qt::WA_DeleteOnClose);
         ui->mdiArea->addSubWindow(document);
         document->show();
     }
+}
+
+void MainWindow::on_mdiArea_subWindowActivated(QMdiSubWindow *window){
+    bool enabled;
+    if (!window){
+        setWindowTitle("JSON edit");
+        enabled = false;
+    }
+    else {
+        DocumentView* documentView = static_cast<DocumentView*>(window->widget());
+        setWindowTitle("JSON edit - " + documentView->windowTitle());
+        enabled = true;
+    }
+    ui->actionSave->setEnabled(enabled);
+    ui->actionSave_as->setEnabled(enabled);
+    ui->actionClose->setEnabled(enabled);
+    ui->actionText->setEnabled(enabled);
+    ui->actionSingle_column->setEnabled(enabled);
+    ui->actionDouble_column->setEnabled(enabled);
+}
+
+void MainWindow::activeWindowTitleChanged(const QString &title){
+    setWindowTitle("JSON edit - " + title);
 }

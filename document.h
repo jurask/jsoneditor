@@ -18,9 +18,11 @@ public:
     bool isValid() const;
     QString name() const;
     QTextDocument* textDocument();
+    bool isDirty() const;
 
 signals:
     void nameChanged(QString name);
+    void dirtyChanged(bool dirty);
 
 public slots:
 private:

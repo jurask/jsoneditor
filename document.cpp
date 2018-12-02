@@ -6,6 +6,7 @@ Document::Document(const QString& name, QObject* parent) : QObject(parent){
     documentname = name;
     documentpath = "";
     data = new QTextDocument("", this);
+    connect(data, &QTextDocument::modificationChanged, this, &Document::dirtyChanged);
     valid = true;
 }
 
@@ -26,6 +27,8 @@ Document::Document(QFile& file, QObject* parent) : QObject(parent){
     QFileInfo info(file);
     documentpath = info.canonicalFilePath();
     documentname = info.baseName();
+    data->setModified(false);
+    connect(data, &QTextDocument::modificationChanged, this, &Document::dirtyChanged);
     valid = true;
 }
 
@@ -39,6 +42,7 @@ bool Document::save(){
     out << data->toPlainText();
     out.flush();
     file.close();
+    data->setModified(false);
     return true;
 }
 
@@ -60,4 +64,8 @@ QTextDocument* Document::textDocument(){
 
 bool Document::isValid() const{
     return valid;
+}
+
+bool Document::isDirty() const{
+    return data->isModified();
 }

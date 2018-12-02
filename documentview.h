@@ -19,10 +19,17 @@ public:
     ~DocumentView();
     QString documentName() const;
     bool isValid() const;
+    bool isDirty() const;
+
+private slots:
+    void assembleTitle();
 
 private:
     Ui::DocumentView *ui;
     Document* document;
+
+signals:
+    void dirtyChanged(bool dirty);
 };
 
 #endif // DOCUMENTVIEW_H
