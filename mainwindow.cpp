@@ -94,3 +94,13 @@ void MainWindow::on_mdiArea_subWindowActivated(QMdiSubWindow *window){
 void MainWindow::activeWindowTitleChanged(const QString &title){
     setWindowTitle("JSON edit - " + title);
 }
+
+void MainWindow::on_actionSave_as_triggered(){
+    DocumentView* documentView = static_cast<DocumentView*>(ui->mdiArea->activeSubWindow()->widget());
+    documentView->saveAs();
+}
+
+void MainWindow::on_actionSave_triggered(){
+    DocumentView* documentView = static_cast<DocumentView*>(ui->mdiArea->activeSubWindow()->widget());
+    documentView->save();
+}

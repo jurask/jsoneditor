@@ -19,6 +19,7 @@ public:
     QString name() const;
     QTextDocument* textDocument();
     bool isDirty() const;
+    bool hasPath() const;
 
 signals:
     void nameChanged(QString name);

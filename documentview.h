@@ -20,6 +20,8 @@ public:
     QString documentName() const;
     bool isValid() const;
     bool isDirty() const;
+    void saveAs();
+    void save();
 
 private slots:
     void assembleTitle();

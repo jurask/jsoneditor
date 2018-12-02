@@ -27,6 +27,10 @@ private slots:
 
     void activeWindowTitleChanged(const QString &title);
 
+    void on_actionSave_as_triggered();
+
+    void on_actionSave_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString nextDocumentName(const QString& baseName) const;

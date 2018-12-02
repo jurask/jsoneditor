@@ -1,6 +1,7 @@
 #include "document.h"
 #include <QTextStream>
 #include <QFileInfo>
+#include <QDir>
 
 Document::Document(const QString& name, QObject* parent) : QObject(parent){
     documentname = name;
@@ -33,6 +34,11 @@ Document::Document(QFile& file, QObject* parent) : QObject(parent){
 }
 
 bool Document::save(){
+    QDir dir = (QFileInfo(documentpath).dir());
+    if (!dir.exists()){
+        if (!dir.mkpath("."))
+            return false;
+    }
     QFile file(documentpath);
     bool ok = file.open(QIODevice::WriteOnly | QIODevice::Text);
     if (!ok)
@@ -47,11 +53,13 @@ bool Document::save(){
 }
 
 bool Document::saveAs(QString& name){
+    documentpath = name;
+    if (!save())
+        return false;
     QFileInfo info(name);
-    documentpath = info.canonicalFilePath();
     documentname = info.baseName();
     emit nameChanged(documentname);
-    return save();
+    return true;
 }
 
 QString Document::name() const{
@@ -68,4 +76,8 @@ bool Document::isValid() const{
 
 bool Document::isDirty() const{
     return data->isModified();
+}
+
+bool Document::hasPath() const{
+    return documentpath != "";
 }

@@ -2,6 +2,8 @@
 #include "ui_documentview.h"
 
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QDir>
 
 DocumentView::DocumentView(const QString &name, QWidget* parent) : QWidget(parent), ui(new Ui::DocumentView){
     ui->setupUi(this);
@@ -49,4 +51,21 @@ void DocumentView::assembleTitle(){
         setWindowTitle(title);
     else
         setWindowTitle(title+"*");
+}
+
+void DocumentView::saveAs(){
+    QString filename = QFileDialog::getSaveFileName(this, tr("Save file as"), QDir::homePath(), tr("Json files (*.json);;All files (*.*)"));
+    if (filename != ""){
+        if (!document->saveAs(filename))
+            QMessageBox::critical(this, "Error", "Error saving file");
+    }
+}
+
+void DocumentView::save(){
+    if (!document->hasPath()){
+        saveAs();
+        return;
+    }
+    if (!document->save())
+        QMessageBox::critical(this, "Error", "Error saving file");
 }
