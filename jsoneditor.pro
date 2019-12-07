@@ -29,13 +29,18 @@ SOURCES += \
         mainwindow.cpp \
     documentmodel.cpp \
     document.cpp \
-    documentview.cpp
+    documentview.cpp \
+    jsonitem.cpp \
+    jsonobject.cpp
 
 HEADERS += \
         mainwindow.h \
     documentmodel.h \
     document.h \
-    documentview.h
+    documentview.h \
+    jsonitem.h \
+    types.h \
+    jsonobject.h
 
 FORMS += \
         mainwindow.ui \
